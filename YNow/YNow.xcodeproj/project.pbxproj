@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C30EAA117D72C4C00642D17 /* YahooClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C30EAA017D72C4C00642D17 /* YahooClient.m */; };
 		C0A5F04F982946D38F8C8B16 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E391ECE2D114BB3BACB4F3D /* libPods.a */; };
 		E73BAD7817D0B70500E4767B /* mystories.png in Resources */ = {isa = PBXBuildFile; fileRef = E73BAD7017D0B70500E4767B /* mystories.png */; };
 		E73BAD7917D0B70500E4767B /* mystories@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E73BAD7117D0B70500E4767B /* mystories@2x.png */; };
@@ -64,6 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C30EA9F17D72C4C00642D17 /* YahooClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YahooClient.h; path = "../../../Downloads/YNow-master/YNow/YNow/YahooClient.h"; sourceTree = "<group>"; };
+		2C30EAA017D72C4C00642D17 /* YahooClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YahooClient.m; path = "../../../Downloads/YNow-master/YNow/YNow/YahooClient.m"; sourceTree = "<group>"; };
 		2E391ECE2D114BB3BACB4F3D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CE8090020DB4AACADD8C9C7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		E73BAD7017D0B70500E4767B /* mystories.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mystories.png; sourceTree = "<group>"; };
@@ -155,6 +158,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C30EAA217D72C5000642D17 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				2C30EAA017D72C4C00642D17 /* YahooClient.m */,
+				2C30EA9F17D72C4C00642D17 /* YahooClient.h */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		E764A98017CE131B00E38082 = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +203,7 @@
 		E764A99417CE131B00E38082 /* YNow */ = {
 			isa = PBXGroup;
 			children = (
+				2C30EAA217D72C5000642D17 /* API */,
 				E7B4A49417D5035200FD1804 /* Model */,
 				E7B4A49017D502D000FD1804 /* Util */,
 				E7B4A48417D4FB0000FD1804 /* Custom */,
@@ -477,6 +490,7 @@
 				E7B4A49717D5035C00FD1804 /* Story.m in Sources */,
 				E764A99B17CE131B00E38082 /* main.m in Sources */,
 				E7B4A47C17D4986700FD1804 /* CInterpolator.mm in Sources */,
+				2C30EAA117D72C4C00642D17 /* YahooClient.m in Sources */,
 				E764A9E017CF7BA100E38082 /* TrendingNowViewController.m in Sources */,
 				E7B4A48C17D5000500FD1804 /* StoryDescView.m in Sources */,
 				E7B4A47917D4986700FD1804 /* CBetterCollectionViewCell.m in Sources */,

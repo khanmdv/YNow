@@ -12,11 +12,12 @@
 #import "StoryDescView.h"
 #import "CCoverflowCollectionViewLayout.h"
 #import "CoverflowCollectionCell.h"
+#import "YahooClient.h"
 #import <UIImageView+AFNetworking.h>
 
 @interface TopStoriesViewController ()
 
-@property (nonatomic, strong) NSArray* stories;
+@property (nonatomic, strong) NSMutableArray* stories;
 @property (readwrite, nonatomic, strong) StoryDescView *titleView;
 
 @end
@@ -33,7 +34,8 @@
     }
 	else
     {
-		Story* story = [self.stories objectAtIndex:theIndexPath.row];
+        Story* story = [self.stories objectAtIndex:theIndexPath.row];
+        NSLog(@"%@",story);
         [self.titleView fillStoryWithTitle:story.title
                                     andSrc:@"yahoo.com"
                                    andDate:story.date
@@ -54,8 +56,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    self.stories = [Util getTestData];
+    self.stories = [NSMutableArray array];
+    [self fetchStories];
+    //self.stories = [Util getTestData];
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"StoryDescView"
                                                     bundle:[NSBundle mainBundle]]
@@ -116,5 +119,22 @@
     
 	NSLog(@"%@", [self.collectionView.collectionViewLayout layoutAttributesForItemAtIndexPath:theIndexPath]);
 }
+
+- (void)fetchStories{
+    [[YahooClient instance] getNewsFeed:0 success: ^(AFHTTPRequestOperation *operation, id response) {
+        id results = [response valueForKeyPath:@"result.items"];
+        if ([results isKindOfClass:[NSArray class]]) {
+            [self.stories removeAllObjects];
+            self.stories = [Story storyWithArray:results];
+            [self.collectionView reloadData];
+        }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        // Do nothing
+        NSLog(@"%@",error);
+        }
+    ];
+
+}
+
 
 @end

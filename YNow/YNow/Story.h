@@ -17,4 +17,6 @@
 
 -(id) initWithImg: ( NSString*) aImgUrl title : (NSString*) aTitle desc : (NSString*) aDesc andDate:(NSString*)aDate;
 
++ (NSMutableArray *)storyWithArray:(NSArray *)array;
+
 @end
