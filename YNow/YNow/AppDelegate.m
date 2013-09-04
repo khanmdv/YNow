@@ -55,10 +55,10 @@
                                  trendingNowVC,
                                  moreappsVC
                                  ];
-    
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:tabbarVC];
-    
     self.window.rootViewController = navVC;
+    tabbarVC.delegate = self;
+    tabbarVC.title = @"Top Stories";
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
@@ -178,6 +178,12 @@
     
     return _persistentStoreCoordinator;
 }
+
+-(void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController  {
+    tabBarController.title = viewController.title;
+}
+
+
 
 #pragma mark - Application's Documents directory
 

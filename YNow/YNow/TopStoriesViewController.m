@@ -35,7 +35,6 @@
 	else
     {
         Story* story = [self.stories objectAtIndex:theIndexPath.row];
-        NSLog(@"%@",story);
         [self.titleView fillStoryWithTitle:story.title
                                     andSrc:@"yahoo.com"
                                    andDate:story.date
@@ -59,7 +58,6 @@
     self.stories = [NSMutableArray array];
     [self fetchStories];
     //self.stories = [Util getTestData];
-    
     [self.collectionView registerNib:[UINib nibWithNibName:@"StoryDescView"
                                                     bundle:[NSBundle mainBundle]]
           forSupplementaryViewOfKind:@"title"
