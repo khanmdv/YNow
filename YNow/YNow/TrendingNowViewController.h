@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TrendingNowViewController : UIViewController
+@interface TrendingNowViewController : UITableViewController
 
 @end
