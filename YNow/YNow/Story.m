@@ -57,5 +57,16 @@
     return stories;
 }
 
++ (NSMutableArray *)trendsWithArray:(NSArray *)array {
+    NSMutableArray *stories = [[NSMutableArray alloc] initWithCapacity:array.count];
+    NSString *title, *url;
+    for (NSDictionary *params in array) {
+        title = [params valueForKeyPath:@"title"];
+        url = [NSString stringWithFormat:@"http://m.yahoo.com/w/search?p=%@",title];
+        title = [title capitalizedString];
+        [stories addObject:[[Story alloc] initWithImg:url title:title desc:@"" andDate:@""]];
+    }
+    return stories;
+}
 
 @end
