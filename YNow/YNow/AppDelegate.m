@@ -26,14 +26,11 @@
     
     UITabBarController* tabbarVC = [[UITabBarController alloc] init];
     
-    
     UICollectionViewFlowLayout *aFlowLayout = [[UICollectionViewFlowLayout alloc] init];
     [aFlowLayout setItemSize:CGSizeMake(200, 140)];
     [aFlowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     
-    CCoverflowCollectionViewLayout* coverFlowLayout = [[CCoverflowCollectionViewLayout alloc] init];
-    
-    TopStoriesViewController * topStoriesVC = [[TopStoriesViewController alloc] initWithCollectionViewLayout:coverFlowLayout];
+    TopStoriesViewController * topStoriesVC = [[TopStoriesViewController alloc] init];
     topStoriesVC.title = @"Top Stories";
     topStoriesVC.tabBarItem.image = [UIImage imageNamed:@"top.png"];
 
@@ -57,9 +54,11 @@
                                  ];
     
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:tabbarVC];
-    
+    [navVC setNavigationBarHidden:YES];
+    //[[UITabBar appearance] setBarStyle:UIBarStyleBlack];
+     
     self.window.rootViewController = navVC;
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
