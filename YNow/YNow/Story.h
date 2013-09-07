@@ -7,15 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RestObject.h"
 
-@interface Story : NSObject
+@interface Story : RestObject
 
-@property (nonatomic, strong) NSString* imgUrl;
-@property (nonatomic, strong) NSString* title;
-@property (nonatomic, strong) NSString* desc;
-@property (nonatomic, strong) NSString* date;
-
--(id) initWithImg: ( NSString*) aImgUrl title : (NSString*) aTitle desc : (NSString*) aDesc andDate:(NSString*)aDate;
+@property (nonatomic, strong, readonly) NSString* imgUrl;
+@property (nonatomic, strong, readonly) NSString* imgUrl320;
+@property (nonatomic, strong, readonly) NSString* storyTitle;
+@property (nonatomic, strong, readonly) NSString* shortDesc;
+@property (nonatomic, strong, readonly) NSString* storyDate;
+@property (nonatomic, strong, readonly) NSString* source;
+@property (nonatomic, strong, readonly) NSString* storyId;
+@property (nonatomic, strong, readonly) NSString* storyUrl;
 
 + (NSMutableArray *)storyWithArray:(NSArray *)array;
 
