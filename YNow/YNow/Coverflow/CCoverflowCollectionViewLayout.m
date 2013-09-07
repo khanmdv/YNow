@@ -105,7 +105,6 @@
     [super prepareLayout];
 
 	self.centerOffset = (self.collectionView.bounds.size.width - self.cellSpacing) * 0.5f;
-
     self.cellCount = [self.collectionView numberOfItemsInSection:0];
 }
 
@@ -128,7 +127,7 @@
 	// TODO -- 3 is a bit of a fudge to make sure we get all cells... Ideally we should compute the right number of extra cells to fetch...
     NSInteger theStart = MIN(MAX((NSInteger)floorf(CGRectGetMinX(rect) / self.cellSpacing) - 3, 0), self.cellCount);
     NSInteger theEnd = MIN(MAX((NSInteger)ceilf(CGRectGetMaxX(rect) / self.cellSpacing) + 3, 0), self.cellCount);
-
+    
     for (NSInteger N = theStart; N != theEnd; ++N) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:N inSection:0];
 
