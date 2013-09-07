@@ -41,5 +41,14 @@
     [self getPath:@"v1/newsfeed" parameters:params success:success failure:failure];
 }
 
+- (void)getTrends:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))success failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failure {
 
+    NSURL *url = [NSURL URLWithString:@"http://api.timesense.yahoo.com:4080/timesense/v3/en-US/topbuzzing?clientid=demo&count=15&format=json"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:success failure:failure];
+    
+    [operation start];
+    
+}
 @end

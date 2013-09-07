@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2C30EAA417D74C1B00642D17 /* YahooClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C30EAA317D74C1B00642D17 /* YahooClient.m */; };
+		2CF7CADF17D9F53E00014667 /* TrendingWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF7CADD17D9F53E00014667 /* TrendingWebViewController.m */; };
+		2CF7CAE017D9F53E00014667 /* TrendingWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF7CADE17D9F53E00014667 /* TrendingWebViewController.xib */; };
 		C0A5F04F982946D38F8C8B16 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E391ECE2D114BB3BACB4F3D /* libPods.a */; };
 		E735201B17D850D00044EDD6 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = E735201A17D850D00044EDD6 /* iCarousel.m */; };
 		E735201D17D852750044EDD6 /* page.png in Resources */ = {isa = PBXBuildFile; fileRef = E735201C17D852750044EDD6 /* page.png */; };
@@ -18,6 +20,7 @@
 		E735202B17D8F44B0044EDD6 /* RestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E735202A17D8F44B0044EDD6 /* RestObject.m */; };
 		E735202E17D8F5FB0044EDD6 /* NSDictionary+CPAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E735202D17D8F5FB0044EDD6 /* NSDictionary+CPAdditions.m */; };
 		E735203117D9A6510044EDD6 /* PullUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = E735203017D9A6510044EDD6 /* PullUpView.m */; };
+		E735203517DAF0EA0044EDD6 /* Trend.m in Sources */ = {isa = PBXBuildFile; fileRef = E735203417DAF0EA0044EDD6 /* Trend.m */; };
 		E73BAD7817D0B70500E4767B /* mystories.png in Resources */ = {isa = PBXBuildFile; fileRef = E73BAD7017D0B70500E4767B /* mystories.png */; };
 		E73BAD7917D0B70500E4767B /* mystories@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E73BAD7117D0B70500E4767B /* mystories@2x.png */; };
 		E73BAD7A17D0B70500E4767B /* others.png in Resources */ = {isa = PBXBuildFile; fileRef = E73BAD7217D0B70500E4767B /* others.png */; };
@@ -76,6 +79,9 @@
 /* Begin PBXFileReference section */
 		2C30EAA317D74C1B00642D17 /* YahooClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YahooClient.m; sourceTree = "<group>"; };
 		2C30EAA517D74C2700642D17 /* YahooClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YahooClient.h; sourceTree = "<group>"; };
+		2CF7CADC17D9F53E00014667 /* TrendingWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendingWebViewController.h; sourceTree = "<group>"; };
+		2CF7CADD17D9F53E00014667 /* TrendingWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendingWebViewController.m; sourceTree = "<group>"; };
+		2CF7CADE17D9F53E00014667 /* TrendingWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrendingWebViewController.xib; sourceTree = "<group>"; };
 		2E391ECE2D114BB3BACB4F3D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CE8090020DB4AACADD8C9C7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		E735201917D850D00044EDD6 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
@@ -95,6 +101,8 @@
 		E735202F17D9A6510044EDD6 /* PullUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullUpView.h; sourceTree = "<group>"; };
 		E735203017D9A6510044EDD6 /* PullUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullUpView.m; sourceTree = "<group>"; };
 		E735203217D9E8B60044EDD6 /* PullUpViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullUpViewDelegate.h; sourceTree = "<group>"; };
+		E735203317DAF0EA0044EDD6 /* Trend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trend.h; sourceTree = "<group>"; };
+		E735203417DAF0EA0044EDD6 /* Trend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trend.m; sourceTree = "<group>"; };
 		E73BAD7017D0B70500E4767B /* mystories.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mystories.png; sourceTree = "<group>"; };
 		E73BAD7117D0B70500E4767B /* mystories@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mystories@2x.png"; sourceTree = "<group>"; };
 		E73BAD7217D0B70500E4767B /* others.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = others.png; sourceTree = "<group>"; };
@@ -297,6 +305,9 @@
 				E7B4A48017D4A88300FD1804 /* TopStoriesViewController.m */,
 				E7B4A48117D4A88300FD1804 /* TopStoriesViewController.xib */,
 				E764A9D817CF7B9000E38082 /* MyStoriesViewController.h */,
+				2CF7CADC17D9F53E00014667 /* TrendingWebViewController.h */,
+				2CF7CADD17D9F53E00014667 /* TrendingWebViewController.m */,
+				2CF7CADE17D9F53E00014667 /* TrendingWebViewController.xib */,
 				E764A9D917CF7B9000E38082 /* MyStoriesViewController.m */,
 				E764A9DA17CF7B9000E38082 /* MyStoriesViewController.xib */,
 				E764A9DD17CF7BA100E38082 /* TrendingNowViewController.h */,
@@ -371,6 +382,8 @@
 				E735202A17D8F44B0044EDD6 /* RestObject.m */,
 				E7B4A49517D5035C00FD1804 /* Story.h */,
 				E7B4A49617D5035C00FD1804 /* Story.m */,
+				E735203317DAF0EA0044EDD6 /* Trend.h */,
+				E735203417DAF0EA0044EDD6 /* Trend.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -469,6 +482,7 @@
 				E764A9E117CF7BA100E38082 /* TrendingNowViewController.xib in Resources */,
 				E7B4A48F17D5002D00FD1804 /* StoryDescView.xib in Resources */,
 				E73BAD7817D0B70500E4767B /* mystories.png in Resources */,
+				2CF7CAE017D9F53E00014667 /* TrendingWebViewController.xib in Resources */,
 				E73BAD7B17D0B70500E4767B /* others@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,6 +547,7 @@
 				2C30EAA417D74C1B00642D17 /* YahooClient.m in Sources */,
 				E735202E17D8F5FB0044EDD6 /* NSDictionary+CPAdditions.m in Sources */,
 				E764A99F17CE131B00E38082 /* AppDelegate.m in Sources */,
+				E735203517DAF0EA0044EDD6 /* Trend.m in Sources */,
 				E735202317D864450044EDD6 /* GTMNSString+HTMl.m in Sources */,
 				E7B4A49717D5035C00FD1804 /* Story.m in Sources */,
 				E735202B17D8F44B0044EDD6 /* RestObject.m in Sources */,
@@ -541,6 +556,7 @@
 				E735201B17D850D00044EDD6 /* iCarousel.m in Sources */,
 				E7B4A47C17D4986700FD1804 /* CInterpolator.mm in Sources */,
 				E764A9E017CF7BA100E38082 /* TrendingNowViewController.m in Sources */,
+				2CF7CADF17D9F53E00014667 /* TrendingWebViewController.m in Sources */,
 				E7B4A48C17D5000500FD1804 /* StoryDescView.m in Sources */,
 				E7B4A47917D4986700FD1804 /* CBetterCollectionViewCell.m in Sources */,
 				E7B4A47B17D4986700FD1804 /* CCoverflowCollectionViewLayout.m in Sources */,

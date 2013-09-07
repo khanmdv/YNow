@@ -52,7 +52,6 @@
                                  trendingNowVC,
                                  moreappsVC
                                  ];
-    
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:tabbarVC];
     [navVC setNavigationBarHidden:YES];
     //[[UITabBar appearance] setBarStyle:UIBarStyleBlack];
@@ -177,6 +176,12 @@
     
     return _persistentStoreCoordinator;
 }
+
+-(void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController  {
+    tabBarController.title = viewController.title;
+}
+
+
 
 #pragma mark - Application's Documents directory
 

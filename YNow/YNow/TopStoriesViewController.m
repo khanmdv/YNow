@@ -55,7 +55,6 @@
     if (self.webView.loading){
         [self.webView stopLoading];
     }
-    [self.webView  loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:st.storyUrl]]];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -80,10 +79,6 @@
     
     // Hide the nav bar
     [self.navigationController setNavigationBarHidden:YES];
-    
-    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(viewCompleteStory:)];
-    panGesture.minimumNumberOfTouches = 1;
-    //[self.descView addGestureRecognizer:panGesture];
 }
 
 - (void)didReceiveMemoryWarning
