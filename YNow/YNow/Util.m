@@ -12,6 +12,8 @@
 @implementation Util
 
 +(NSArray*) getTestData{
+    return nil;
+    /*
     return [NSMutableArray arrayWithObjects:
             [[Story alloc] initWithImg:@"http://l.yimg.com/bt/api/res/1.2/G6TN1AhE4s1K6PkOmJw8KA--/YXBwaWQ9eW5ld3M7aD0xMjU7dz0zMjA7cT04NQ--/http://l.yimg.com/nn/fp/rsz/081513/images/smush/oldestman_ipad_1376538656.jpg"
                                  title:@"Is this man the world’s oldest living person?"
@@ -28,6 +30,7 @@
             [[Story alloc] initWithImg:@"http://l.yimg.com/bt/api/res/1.2/OybUX2iDcSx17R1fC8dqMA--/YXBwaWQ9eW5ld3M7aD0xODE7dz0zMjA7cT04NQ--/http://media.zenfs.com/en_US/Sports/MMAWeekly/Ronda-Rousey-and-Miesha-Tate-TUF-18-Coaches-478x2701.jpg"
                                  title:@"The Ultimate Fighter: Team Rousey vs. Team Tate Cast Revealed"
                                   desc:@"The Ultimate Fighter returns on Sept. 4 with The Ultimate Fighter: Team Rousey vs. Team Tate. It debuts on the new Fox Sports 1 network at 10 p.m. ET with a two-hour premiere."  andDate:@"Sep 21, 2013"], nil];
+     */
 }
 
 @end
