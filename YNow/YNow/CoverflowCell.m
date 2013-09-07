@@ -1,26 +1,25 @@
 //
-//  CoverflowCollectionCell.m
+//  CoverflowCell.m
 //  YNow
 //
-//  Created by Mohtashim Khan on 9/2/13.
+//  Created by Mohtashim Khan on 9/5/13.
 //  Copyright (c) 2013 Yahoo. All rights reserved.
 //
 
-#import "CoverflowCollectionCell.h"
+#import "CoverflowCell.h"
 #import <QuartzCore/QuartzCore.h>
 
-@implementation CoverflowCollectionCell
+@implementation CoverflowCell
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // make sure we rasterize nicely for retina
-        self.imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-        self.imageView.layer.shouldRasterize = YES;
+        // Initialization code
     }
     return self;
 }
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
