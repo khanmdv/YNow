@@ -14,4 +14,5 @@
 @property (nonatomic, weak) IBOutlet id<PullUpViewDelegate> delegate;
 
 -(void) restoreOriginalPosition : (BOOL) animated;
+-(void) switchReadStoryMode: (BOOL) animated onFinish : (OnPullUpFinish) onFinish;
 @end

@@ -8,6 +8,7 @@
 
 #import "AFHTTPClient.h"
 #import "AFJSONRequestOperation.h"
+#import "Story.h"
 
 @interface YahooClient : AFHTTPClient
 
@@ -17,5 +18,12 @@
 
 - (void)getTrends:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))success failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failure;
 
+- (void)getSavedStories:(void (^)(id JSON))success failure:(void (^)(id JSON))failure;
+
+- (BOOL) saveStory:(Story*)st;
+
+- (BOOL) removeStory:(Story*)st;
+
+- (BOOL) isFavorited : (Story*) st;
 
 @end

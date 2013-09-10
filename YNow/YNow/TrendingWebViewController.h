@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Trend.h"
 
 @interface TrendingWebViewController : UIViewController<UIWebViewDelegate>
-@property(strong,atomic) NSURL *url;
+
+@property(strong,atomic) Trend *trend;
+
 @property(nonatomic,retain) IBOutlet UIWebView *webView;
-@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+
 @end

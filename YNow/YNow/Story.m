@@ -44,7 +44,7 @@
 
 -(NSString*) imgUrl{
     if (_imgUrl == nil){
-        NSArray* imageArray = [self.data valueForKey:@"images"];
+        NSArray* imageArray = self.data[@"images"] == nil ? [self.data valueForKey:@"images"] : self.data[@"images"];
         for (NSDictionary *image in imageArray)
         {
             NSNumber *width = [image objectForKey:@"width"];
@@ -91,6 +91,10 @@
         _storyDate = [dFormat stringFromDate:dt];
     }
     return _storyDate;
+}
+
+-(NSString*) storyRawDate{
+    return [self.data valueForKeyPath:@"published"];
 }
 
 -(NSString*) storyId{

@@ -27,11 +27,11 @@
 {
     [super viewDidLoad];
 
-    // Do any additional setup after loading the view from its nib.
-    [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
-    _spinner.frame = CGRectMake(self.view.frame.size.width / 2.0, (self.view.frame.size.height / 2.0)+40,100,100);
-    [[[_webView subviews] objectAtIndex:0] addSubview:_spinner];
-
+    if (self.trend){
+        // Do any additional setup after loading the view from its nib.
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.trend.trendUrl]]];
+        self.title = @"Loading...";
+    }
 }
 
 -(void)handleRefresh:(UIRefreshControl *)refresh {
@@ -50,10 +50,9 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [_spinner stopAnimating];
+    self.title = self.trend.trendText;
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    [_spinner startAnimating];
 }
 @end

@@ -10,13 +10,12 @@
 #import "Util.h"
 #import "Story.h"
 #import "StoryDescView.h"
-#import "CCoverflowCollectionViewLayout.h"
-#import "CoverflowCollectionCell.h"
 #import "YahooClient.h"
 #import <UIImageView+AFNetworking.h>
 #import "CoverflowCell.h"
 #import <QuartzCore/QuartzCore.h>
 #import "PullUpView.h"
+#import <Twitter/Twitter.h>
 
 @interface TopStoriesViewController ()
 
@@ -32,17 +31,23 @@
 
 - (void)fetchStories{
     [[YahooClient instance] getNewsFeed:0 success: ^(AFHTTPRequestOperation *operation, id response) {
+        [self.spinner stopAnimating];
         id results = [response valueForKeyPath:@"result.items"];
         if ([results isKindOfClass:[NSArray class]]) {
             [self.stories removeAllObjects];
             self.stories = [Story storyWithArray:results];
             [self.carousel reloadData];
             [self updateStoryDescAt:0];
+            self.arrow.hidden = NO;
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         // Do nothing
         NSLog(@"%@",error);
+        [self.spinner stopAnimating];
     }];
+    [self.spinner setHidden:NO];
+    [self.spinner startAnimating];
+    
 }
 
 -(void) updateStoryDescAt:(NSUInteger)index{
@@ -54,7 +59,10 @@
     NSLog(@"%@", st.storyUrl);
     if (self.webView.loading){
         [self.webView stopLoading];
+        self.storyTitle.text = @"";
     }
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:st.storyUrl]]];
+    self.storyTitle.text = st.storyTitle;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -76,7 +84,13 @@
     //self.stories = [Util getTestData];
 
     self.carousel.type = iCarouselTypeCoverFlow2;
-    
+}
+
+-(void) viewWillDisappear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
+-(void) viewWillAppear:(BOOL)animated{
     // Hide the nav bar
     [self.navigationController setNavigationBarHidden:YES];
 }
@@ -220,13 +234,39 @@
     }
 }
 
+- (void)carouselDidScroll:(iCarousel *)carousel{
+    NSLog(@"Now at = %f", carousel.scrollOffset * 100);
+    float offset = carousel.scrollOffset * -100.0;
+    float angle = 0.0;
+    if (offset > 20.0) {
+        if (offset > 50.0){
+            angle = M_PI_2 * 2;
+        } else {
+            angle = 0.0f;
+        }
+        CGAffineTransform transform = CGAffineTransformMakeRotation(angle);
+        [UIView animateWithDuration:0.5 animations:^{
+            self.arrow.transform = transform;
+        }];
+    }
+}
+
+- (void)carouselDidEndDragging:(iCarousel *)carousel willDecelerate:(BOOL)decelerate{
+    float offset = carousel.scrollOffset * -100.0;
+    if (offset > 50.0){
+        [self fetchStories];
+    }
+}
+
 #pragma mark -
 #pragma mark iCarousel taps
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
-    //NSNumber *item = (self.items)[index];
-    //NSLog(@"Tapped view number: %@", item);
+    PullUpView* view = (PullUpView*)self.descView;
+    [view switchReadStoryMode:YES onFinish:^(BOOL success) {
+        [self endMotionInView:self.descView direction:PULLUP];
+    }];
 }
 
 - (void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel{
@@ -269,9 +309,9 @@
 - (void) viewInMotion : (UIView*)aView direction : (PullDirection) aDirection{
     CGFloat alpha = self.carousel.alpha;
     if (aDirection == PULLUP && alpha > 0.0){
-        alpha-=0.05;
+        alpha-=0.01;
     }else if (aDirection == PULLDOWN && alpha < 1) {
-        alpha+=0.05;
+        alpha+=0.01;
     }else{
         return;
     }
@@ -280,14 +320,28 @@
 }
 
 - (void) endMotionInView : (UIView*) aView direction : (PullDirection) aDirection{
+    self.saveButton.hidden = NO;
+    
     if (aDirection == PULLDOWN){
         self.carousel.alpha = 1.0;
         self.carousel.hidden = NO;
         self.carousel.layer.zPosition = 0.8;
+        self.descView.layer.zPosition = 1.0;
+        self.storyToolbar.hidden = YES;
+        self.topBar.layer.zPosition = 0.9;
+        
     }else{
         self.carousel.alpha = 0.1;
         self.carousel.hidden = YES;
-        self.carousel.layer.zPosition = 0;
+        self.carousel.layer.zPosition = 0.8;
+        self.storyToolbar.hidden = NO;
+        self.topBar.layer.zPosition = 0;
+        
+        // Check if the story is favorited or not
+        Story* st = self.stories[self.carousel.currentItemIndex];
+        if ([[YahooClient instance] isFavorited:st]){
+            self.saveButton.hidden = NO;
+        }
     }
 }
 
@@ -300,6 +354,58 @@
     self.carousel.hidden = NO;
     self.carousel.layer.zPosition = 0.8;
     self.descView.layer.zPosition = 1.0;
+    self.storyToolbar.hidden = YES;
+    self.topBar.layer.zPosition = 0.9;
     [view restoreOriginalPosition:YES];
+}
+
+- (IBAction)shareStoryOn:(id)sender {
+    UIActionSheet *shareSheet = [[UIActionSheet alloc] initWithTitle:@"Share On" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:Nil otherButtonTitles:@"Facebook", @"Twitter", nil];
+    [shareSheet showInView:self.view];
+}
+
+- (IBAction)saveStory:(id)sender {
+    YahooClient * client = [YahooClient instance];
+    Story* st = self.stories[self.carousel.currentItemIndex];
+    if ( [client saveStory:st] ){
+        self.saveButton.hidden = YES;
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    Story* st = [self.stories objectAtIndex:self.carousel.currentItemIndex];
+    
+    NSString* service = nil;
+    if (buttonIndex == 0){
+        // Facebook
+        service = SLServiceTypeFacebook;
+    } else if(buttonIndex == 1) {
+        // Twitter
+        service = SLServiceTypeTwitter;
+    } else if (buttonIndex == 2){
+        return;
+    }
+    
+    //Create the tweet sheet
+    SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:service];
+    
+    //Customize the tweet sheet here
+    //Add a tweet message
+    [tweetSheet setInitialText:st.storyTitle];
+    
+    [tweetSheet addURL:[NSURL URLWithString:st.storyUrl]];
+    
+    //Set a blocking handler for the tweet sheet
+    tweetSheet.completionHandler = ^(TWTweetComposeViewControllerResult result){
+        [self dismissViewControllerAnimated:YES
+                                 completion:^{}];
+    };
+    
+    //Show the tweet sheet!
+    [self presentViewController:tweetSheet
+                       animated:YES
+                     completion:^{}];
+    
 }
 @end

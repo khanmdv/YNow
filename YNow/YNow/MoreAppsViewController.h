@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MoreAppsViewController : UIViewController
+@interface MoreAppsViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end

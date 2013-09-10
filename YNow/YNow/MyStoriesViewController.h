@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyStoriesViewController : UIViewController
+@interface MyStoriesViewController : UITableViewController
 
 @end

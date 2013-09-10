@@ -6,6 +6,9 @@
 //  Copyright (c) 2013 Yahoo. All rights reserved.
 //
 
+#define kOFFSET_YPOS    -188.0
+#define kPULL_THRESHOLD 120.0
+
 #import "PullUpView.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -63,38 +66,53 @@
     if (touches.count > 1) return;
     
     UITouch *touch = [touches anyObject];
-    CGPoint point = [touch locationInView:self];
-    float diff = self.start - point.y;
+    CGPoint point = [touch locationInView:self.superview];
+    CGPoint prev = [touch previousLocationInView:self.superview];
     
     CGRect fr = self.frame;
-    if (point.y > self.start){ // down direction
-        fr.origin.y += diff;
+    if (point.y > prev.y){ // down direction
+        fr.origin.y+=10;
     } else{
-        fr.origin.y -= diff;
+        fr.origin.y-=10;
     }
     self.frame = fr;
+    
+    NSLog(@"Y = %f", self.frame.origin.y);
     if (self.delegate){
-        [self.delegate viewInMotion:self direction: diff >= 0 ? PULLUP : PULLDOWN];
+        [self.delegate viewInMotion:self direction:(prev.y > point.y ? PULLUP : PULLDOWN)];
     }
 }
 
 -(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     UITouch *touch = [touches anyObject];
-    CGPoint point = [touch locationInView:self];
-    float diff = self.start - point.y;
+    CGPoint point = [touch locationInView:self.superview];
+    CGPoint prev = [touch previousLocationInView:self.superview];
     
-    if (point.y < 50){
+    void(^onFinish)(PullDirection dir) = ^(PullDirection dir){
+        if (self.delegate){
+            [self.delegate endMotionInView:self direction:dir];
+        }
+    };
+    
+    NSLog(@"Ending at Y = %f", prev.y);
+    if (point.y < kPULL_THRESHOLD){
         [UIView animateWithDuration:0.3 animations:^{
-            self.frame = CGRectMake(0, -188.0, self.origLocation.size.width, self.origLocation.size.height);
+            self.frame = CGRectMake(0, kOFFSET_YPOS, self.origLocation.size.width, self.origLocation.size.height);
+        } completion:^(BOOL finished) {
+            if (finished && self.delegate){
+                onFinish(PULLUP);
+            }
         }];
-    }else if (point.y > self.origLocation.origin.y){
+    }else {
         [UIView animateWithDuration:0.3 animations:^{
             self.frame = self.origLocation;
+        } completion:^(BOOL finished) {
+            if (finished && self.delegate){
+                onFinish(PULLDOWN);
+            }
         }];
     }
-    if (self.delegate){
-        [self.delegate endMotionInView:self direction:diff >= 0 ? PULLUP : PULLDOWN];
-    }
+   
     self.start = 0.0;
 }
 
@@ -105,6 +123,18 @@
         }];
     }else{
         self.frame = self.origLocation;
+    }
+}
+
+-(void) switchReadStoryMode: (BOOL) animated onFinish : (OnPullUpFinish) onFinish{
+    if (animated){
+    [UIView animateWithDuration:0.5 animations:^{
+        self.frame = CGRectMake(0, kOFFSET_YPOS, self.origLocation.size.width, self.origLocation.size.height);
+    } completion:^(BOOL finished) {
+        onFinish(finished);
+    }];
+    }else{
+        self.frame = CGRectMake(0, kOFFSET_YPOS, self.origLocation.size.width, self.origLocation.size.height);
     }
 }
 

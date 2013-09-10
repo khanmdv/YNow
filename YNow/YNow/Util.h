@@ -12,4 +12,6 @@
 
 +(NSArray*) getTestData;
 
++ (NSArray*) getTestTrends;
+
 @end

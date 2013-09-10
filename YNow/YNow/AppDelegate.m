@@ -11,7 +11,6 @@
 #import "MyStoriesViewController.h"
 #import "TrendingNowViewController.h"
 #import "MoreAppsViewController.h"
-#import "CCoverflowCollectionViewLayout.h"
 
 @implementation AppDelegate
 
@@ -26,15 +25,11 @@
     
     UITabBarController* tabbarVC = [[UITabBarController alloc] init];
     
-    UICollectionViewFlowLayout *aFlowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [aFlowLayout setItemSize:CGSizeMake(200, 140)];
-    [aFlowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    
     TopStoriesViewController * topStoriesVC = [[TopStoriesViewController alloc] init];
     topStoriesVC.title = @"Top Stories";
     topStoriesVC.tabBarItem.image = [UIImage imageNamed:@"top.png"];
 
-    MyStoriesViewController * myStoriesVC = [[MyStoriesViewController alloc] init];
+    MyStoriesViewController * myStoriesVC = [[MyStoriesViewController alloc] initWithStyle:UITableViewStylePlain];
     myStoriesVC.title = @"My Stories";
     myStoriesVC.tabBarItem.image = [UIImage imageNamed:@"mystories.png"];
     
@@ -53,11 +48,12 @@
                                  moreappsVC
                                  ];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:tabbarVC];
-    [navVC setNavigationBarHidden:YES];
+    //[navVC setNavigationBarHidden:YES];
     //[[UITabBar appearance] setBarStyle:UIBarStyleBlack];
      
     self.window.rootViewController = navVC;
     self.window.backgroundColor = [UIColor blackColor];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

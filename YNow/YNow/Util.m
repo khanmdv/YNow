@@ -33,4 +33,19 @@
      */
 }
 
++ (NSArray*) getTestTrends{
+    NSArray* arr = [NSArray arrayWithObjects:@"Milkha Singh", @"Asaram Bapu", @"Syria", @"DelhiGangRape",
+                    @"Erin Andrews", @"James Franco", @"Zimmerman Wife", @"Jennifer LoveHeweitt", @"Victoria Secret model", @"Justin Bieber Moustache", nil];
+    
+    NSMutableArray *marr = [NSMutableArray arrayWithCapacity:arr.count];
+    int i = 1;
+    for(NSString* st in arr){
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        dict[@"title"] = st;
+        dict[@"rating"] = @(i++);
+        [marr addObject:dict];
+    }
+    return marr;
+}
+
 @end

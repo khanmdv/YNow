@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TrendingNowViewController : UITableViewController
+@interface TrendingNowViewController : UIViewController <UIScrollViewDelegate>
+@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView* spinner;
 
 @end

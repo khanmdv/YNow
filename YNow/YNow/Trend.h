@@ -13,8 +13,7 @@
 + (NSMutableArray *)trendsWithArray:(NSArray *)array;
 
 @property (nonatomic, strong, readonly) NSString* trendUrl;
+@property (nonatomic, assign, readonly) int trendRating;
 @property (nonatomic, strong, readonly) NSString* trendText;
-
-+ (NSMutableArray *)trendsWithArray:(NSArray *)array;
 
 @end

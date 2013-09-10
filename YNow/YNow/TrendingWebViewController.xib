@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4488.2" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3715.3"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TrendingWebViewController">
             <connections>
-                <outlet property="spinner" destination="Qwk-0w-OmX" id="PKP-pV-NgC"/>
-                <outlet property="view" destination="bji-BR-LCG" id="XkO-qq-F1a"/>
-                <outlet property="webView" destination="bji-BR-LCG" id="eSL-LA-ToL"/>
+                <outlet property="view" destination="Gge-0Y-rpi" id="hMf-EK-xOC"/>
+                <outlet property="webView" destination="GOG-fk-7PS" id="aro-RD-cg2"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <webView contentMode="scaleToFill" scalesPageToFit="YES" id="bji-BR-LCG">
-            <rect key="frame" x="0.0" y="0.0" width="219" height="216"/>
+        <view contentMode="scaleToFill" id="Gge-0Y-rpi">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-            <connections>
-                <outlet property="delegate" destination="-1" id="qPh-eM-WMk"/>
-            </connections>
-        </webView>
-        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="Qwk-0w-OmX">
-            <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <color key="color" red="0.28322949868127689" green="0.0" blue="0.93058434311224492" alpha="1" colorSpace="calibratedRGB"/>
-        </activityIndicatorView>
+            <subviews>
+                <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GOG-fk-7PS">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="f1M-i6-Hxd"/>
+                    </connections>
+                </webView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
     </objects>
 </document>

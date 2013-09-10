@@ -16,6 +16,7 @@
 @property (nonatomic, strong, readonly) NSString* storyTitle;
 @property (nonatomic, strong, readonly) NSString* shortDesc;
 @property (nonatomic, strong, readonly) NSString* storyDate;
+@property (nonatomic, strong, readonly) NSString* storyRawDate;
 @property (nonatomic, strong, readonly) NSString* source;
 @property (nonatomic, strong, readonly) NSString* storyId;
 @property (nonatomic, strong, readonly) NSString* storyUrl;

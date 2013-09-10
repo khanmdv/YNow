@@ -12,6 +12,8 @@ typedef enum {
     PULLUP, PULLDOWN
 } PullDirection;
 
+typedef void(^OnPullUpFinish)(BOOL success);
+
 @protocol PullUpViewDelegate <NSObject>
 
 @optional
