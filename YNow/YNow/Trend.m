@@ -25,7 +25,7 @@
 
 -(NSString*) trendUrl{
     if (_trendUrl == nil){
-        _trendUrl = [[NSString stringWithFormat:@"http://m.yahoo.com/w/search?p=%@", self.trendText] stringByAddingPercentEscapesUsingEncoding:NSUnicodeStringEncoding] ;
+        _trendUrl = [[NSString stringWithFormat:@"http://m.yahoo.com/w/search?p=%@", self.trendText] stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding] ;
     }
     return _trendUrl;
 }

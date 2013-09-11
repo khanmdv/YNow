@@ -29,7 +29,7 @@
     topStoriesVC.title = @"Top Stories";
     topStoriesVC.tabBarItem.image = [UIImage imageNamed:@"top.png"];
 
-    MyStoriesViewController * myStoriesVC = [[MyStoriesViewController alloc] initWithStyle:UITableViewStylePlain];
+    MyStoriesViewController * myStoriesVC = [[MyStoriesViewController alloc] init];
     myStoriesVC.title = @"My Stories";
     myStoriesVC.tabBarItem.image = [UIImage imageNamed:@"mystories.png"];
     
@@ -52,7 +52,7 @@
     //[[UITabBar appearance] setBarStyle:UIBarStyleBlack];
      
     self.window.rootViewController = navVC;
-    self.window.backgroundColor = [UIColor blackColor];
+    self.window.backgroundColor = [UIColor whiteColor];
     
     [self.window makeKeyAndVisible];
     return YES;

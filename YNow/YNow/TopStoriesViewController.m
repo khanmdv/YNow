@@ -9,7 +9,6 @@
 #import "TopStoriesViewController.h"
 #import "Util.h"
 #import "Story.h"
-#import "StoryDescView.h"
 #import "YahooClient.h"
 #import <UIImageView+AFNetworking.h>
 #import "CoverflowCell.h"
@@ -32,13 +31,14 @@
 - (void)fetchStories{
     [[YahooClient instance] getNewsFeed:0 success: ^(AFHTTPRequestOperation *operation, id response) {
         [self.spinner stopAnimating];
+        self.arrow.hidden = self.pullRefreshLbl.hidden = YES;
         id results = [response valueForKeyPath:@"result.items"];
         if ([results isKindOfClass:[NSArray class]]) {
             [self.stories removeAllObjects];
             self.stories = [Story storyWithArray:results];
             [self.carousel reloadData];
             [self updateStoryDescAt:0];
-            self.arrow.hidden = NO;
+            self.arrow.hidden = self.pullRefreshLbl.hidden = NO;
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         // Do nothing
@@ -84,6 +84,8 @@
     //self.stories = [Util getTestData];
 
     self.carousel.type = iCarouselTypeCoverFlow2;
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
 }
 
 -(void) viewWillDisappear:(BOOL)animated{
@@ -123,18 +125,10 @@
     if (view == nil)
     {
         view = self.cellFromXIB;
-        /*
-         label = [[UILabel alloc] initWithFrame:view.bounds];
-         label.backgroundColor = [UIColor clearColor];
-         label.textAlignment = UITextAlignmentCenter;
-         label.font = [label.font fontWithSize:50];
-         label.tag = 1;
-         [view addSubview:label];*/
     }
     
     cell = (CoverflowCell*)view;
     
-    //[imgView setImageWithURL:[NSURL URLWithString:st.imgUrl]];
     [cell.image setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:st.imgUrl]] placeholderImage:[UIImage imageNamed:@"page.png"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         cell.image.image = image;
         cell.reflectionImage.image = image;
@@ -144,11 +138,6 @@
     
     view.contentMode = UIViewContentModeScaleAspectFit;
     
-    //set item label
-    //remember to always set any properties of your carousel item
-    //views outside of the `if (view == nil) {...}` check otherwise
-    //you'll get weird issues with carousel item content appearing
-    //in the wrong place in the carousel
     label.text = st.storyTitle;
     
     return view;
@@ -172,13 +161,6 @@
         //recycled and used with other index values later
         view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 140.0f, 140.0f)];
         view.contentMode = UIViewContentModeScaleAspectFit;
-        /*
-         label = [[UILabel alloc] initWithFrame:view.bounds];
-         label.backgroundColor = [UIColor clearColor];
-         label.textAlignment = UITextAlignmentCenter;
-         label.font = [label.font fontWithSize:50.0f];
-         label.tag = 1;
-         [view addSubview:label];*/
     }
     else
     {
@@ -186,11 +168,6 @@
         label = (UILabel *)[view viewWithTag:1];
     }
     
-    //set item label
-    //remember to always set any properties of your carousel item
-    //views outside of the `if (view == nil) {...}` check otherwise
-    //you'll get weird issues with carousel item content appearing
-    //in the wrong place in the carousel
     label.text = (index == 0)? @"[": @"]";
     
     return view;
@@ -287,12 +264,6 @@
     
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Error loading the story." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    //[alert show];
-}
-
-
 -(void) viewCompleteStory : (UIPanGestureRecognizer*) panGesture{
     CGPoint point = [panGesture translationInView:panGesture.view];
     NSLog(@"%f", point.y);
@@ -320,7 +291,7 @@
 }
 
 - (void) endMotionInView : (UIView*) aView direction : (PullDirection) aDirection{
-    self.saveButton.hidden = NO;
+    self.saveButton.hidden = YES;
     
     if (aDirection == PULLDOWN){
         self.carousel.alpha = 1.0;
@@ -339,7 +310,7 @@
         
         // Check if the story is favorited or not
         Story* st = self.stories[self.carousel.currentItemIndex];
-        if ([[YahooClient instance] isFavorited:st]){
+        if (![[YahooClient instance] isFavorited:st]){
             self.saveButton.hidden = NO;
         }
     }
@@ -361,7 +332,7 @@
 
 - (IBAction)shareStoryOn:(id)sender {
     UIActionSheet *shareSheet = [[UIActionSheet alloc] initWithTitle:@"Share On" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:Nil otherButtonTitles:@"Facebook", @"Twitter", nil];
-    [shareSheet showInView:self.view];
+    [shareSheet showInView:self.descView];
 }
 
 - (IBAction)saveStory:(id)sender {

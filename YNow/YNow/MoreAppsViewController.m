@@ -69,6 +69,8 @@ static NSArray* apps;
 }
 
 - (void) viewWillAppear:(BOOL)animated{
+    self.tabBarController.navigationItem.title = @"More Yahoo Apps";
+    self.tabBarController.navigationItem.rightBarButtonItem = nil;
     self.collectionView.frame = CGRectMake(0, 64, 320, 568);
     self.collectionView.contentInset = UIEdgeInsetsMake(60, 0, 0, 0);
     NSLog(@"Insets - %f", self.collectionView.contentInset.top);

@@ -43,8 +43,6 @@
 		E75BF3E217DECEED001919BF /* HPLTagCloudGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = E75BF3E117DECEED001919BF /* HPLTagCloudGenerator.m */; };
 		E75BF3E517DF0778001919BF /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = E75BF3E317DF0778001919BF /* refresh.png */; };
 		E75BF3E617DF0778001919BF /* refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E75BF3E417DF0778001919BF /* refresh@2x.png */; };
-		E75BF3EA17DF22B2001919BF /* PopularVideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E75BF3E817DF22B2001919BF /* PopularVideosViewController.m */; };
-		E75BF3EB17DF22B2001919BF /* PopularVideosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E75BF3E917DF22B2001919BF /* PopularVideosViewController.xib */; };
 		E75BF3F517DF2C13001919BF /* ymessenger.png in Resources */ = {isa = PBXBuildFile; fileRef = E75BF3EC17DF2C13001919BF /* ymessenger.png */; };
 		E75BF3F617DF2C13001919BF /* flickr.png in Resources */ = {isa = PBXBuildFile; fileRef = E75BF3ED17DF2C13001919BF /* flickr.png */; };
 		E75BF3F717DF2C13001919BF /* yweather.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E75BF3EE17DF2C13001919BF /* yweather.jpeg */; };
@@ -83,11 +81,10 @@
 		E7801C7517DF5641003AAE84 /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = E7801C7317DF5641003AAE84 /* cross.png */; };
 		E7801C7617DF5641003AAE84 /* cross@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7801C7417DF5641003AAE84 /* cross@2x.png */; };
 		E7801C7817DF9C4F003AAE84 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E7801C7717DF9C4F003AAE84 /* background.png */; };
+		E7801C7C17DFA95B003AAE84 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E7801C7B17DFA95B003AAE84 /* bg.png */; };
 		E7B4A47D17D4986700FD1804 /* CReflectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B4A47617D4986700FD1804 /* CReflectionView.m */; };
 		E7B4A48217D4A88300FD1804 /* TopStoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B4A48017D4A88300FD1804 /* TopStoriesViewController.m */; };
 		E7B4A48317D4A88300FD1804 /* TopStoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7B4A48117D4A88300FD1804 /* TopStoriesViewController.xib */; };
-		E7B4A48C17D5000500FD1804 /* StoryDescView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B4A48B17D5000500FD1804 /* StoryDescView.m */; };
-		E7B4A48F17D5002D00FD1804 /* StoryDescView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7B4A48E17D5002D00FD1804 /* StoryDescView.xib */; };
 		E7B4A49317D5030C00FD1804 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B4A49217D5030C00FD1804 /* Util.m */; };
 		E7B4A49717D5035C00FD1804 /* Story.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B4A49617D5035C00FD1804 /* Story.m */; };
 /* End PBXBuildFile section */
@@ -154,9 +151,6 @@
 		E75BF3E117DECEED001919BF /* HPLTagCloudGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPLTagCloudGenerator.m; sourceTree = "<group>"; };
 		E75BF3E317DF0778001919BF /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
 		E75BF3E417DF0778001919BF /* refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh@2x.png"; sourceTree = "<group>"; };
-		E75BF3E717DF22B2001919BF /* PopularVideosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopularVideosViewController.h; sourceTree = "<group>"; };
-		E75BF3E817DF22B2001919BF /* PopularVideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopularVideosViewController.m; sourceTree = "<group>"; };
-		E75BF3E917DF22B2001919BF /* PopularVideosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopularVideosViewController.xib; sourceTree = "<group>"; };
 		E75BF3EC17DF2C13001919BF /* ymessenger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ymessenger.png; sourceTree = "<group>"; };
 		E75BF3ED17DF2C13001919BF /* flickr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flickr.png; sourceTree = "<group>"; };
 		E75BF3EE17DF2C13001919BF /* yweather.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yweather.jpeg; sourceTree = "<group>"; };
@@ -202,14 +196,12 @@
 		E7801C7317DF5641003AAE84 /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross.png; sourceTree = "<group>"; };
 		E7801C7417DF5641003AAE84 /* cross@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross@2x.png"; sourceTree = "<group>"; };
 		E7801C7717DF9C4F003AAE84 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		E7801C7B17DFA95B003AAE84 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		E7B4A47517D4986700FD1804 /* CReflectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CReflectionView.h; sourceTree = "<group>"; };
 		E7B4A47617D4986700FD1804 /* CReflectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CReflectionView.m; sourceTree = "<group>"; };
 		E7B4A47F17D4A88300FD1804 /* TopStoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopStoriesViewController.h; sourceTree = "<group>"; };
 		E7B4A48017D4A88300FD1804 /* TopStoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopStoriesViewController.m; sourceTree = "<group>"; };
 		E7B4A48117D4A88300FD1804 /* TopStoriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopStoriesViewController.xib; sourceTree = "<group>"; };
-		E7B4A48A17D5000500FD1804 /* StoryDescView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryDescView.h; sourceTree = "<group>"; };
-		E7B4A48B17D5000500FD1804 /* StoryDescView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryDescView.m; sourceTree = "<group>"; };
-		E7B4A48E17D5002D00FD1804 /* StoryDescView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryDescView.xib; sourceTree = "<group>"; };
 		E7B4A49117D5030C00FD1804 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		E7B4A49217D5030C00FD1804 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		E7B4A49517D5035C00FD1804 /* Story.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Story.h; sourceTree = "<group>"; };
@@ -346,6 +338,7 @@
 		E764A9C617CE165800E38082 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				E7801C7B17DFA95B003AAE84 /* bg.png */,
 				E75BF40717DF35A3001919BF /* yfin.png */,
 				E75BF40817DF35A4001919BF /* yfin@2x.png */,
 				E75BF3EC17DF2C13001919BF /* ymessenger.png */,
@@ -403,9 +396,6 @@
 				2CF7CADC17D9F53E00014667 /* TrendingWebViewController.h */,
 				2CF7CADD17D9F53E00014667 /* TrendingWebViewController.m */,
 				2CF7CADE17D9F53E00014667 /* TrendingWebViewController.xib */,
-				E75BF3E717DF22B2001919BF /* PopularVideosViewController.h */,
-				E75BF3E817DF22B2001919BF /* PopularVideosViewController.m */,
-				E75BF3E917DF22B2001919BF /* PopularVideosViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -426,9 +416,6 @@
 				E75BF3E117DECEED001919BF /* HPLTagCloudGenerator.m */,
 				E735201917D850D00044EDD6 /* iCarousel.h */,
 				E735201A17D850D00044EDD6 /* iCarousel.m */,
-				E7B4A48A17D5000500FD1804 /* StoryDescView.h */,
-				E7B4A48B17D5000500FD1804 /* StoryDescView.m */,
-				E7B4A48E17D5002D00FD1804 /* StoryDescView.xib */,
 				E735202417D87A970044EDD6 /* CoverflowCell.xib */,
 				E735202617D8A4400044EDD6 /* CoverflowCell.h */,
 				E735202717D8A4400044EDD6 /* CoverflowCell.m */,
@@ -560,7 +547,6 @@
 				E75BF3FD17DF2C13001919BF /* ymail@2x.png in Resources */,
 				E75BF40917DF35A4001919BF /* yfin.png in Resources */,
 				E764A9DC17CF7B9000E38082 /* MyStoriesViewController.xib in Resources */,
-				E75BF3EB17DF22B2001919BF /* PopularVideosViewController.xib in Resources */,
 				E75BF3E617DF0778001919BF /* refresh@2x.png in Resources */,
 				E735204B17DB8D010044EDD6 /* save.png in Resources */,
 				E764A9E617CF7BAE00E38082 /* MoreAppsViewController.xib in Resources */,
@@ -588,7 +574,6 @@
 				E735204A17DB8D010044EDD6 /* share.png in Resources */,
 				E764A9E117CF7BA100E38082 /* TrendingNowViewController.xib in Resources */,
 				E75BF3F617DF2C13001919BF /* flickr.png in Resources */,
-				E7B4A48F17D5002D00FD1804 /* StoryDescView.xib in Resources */,
 				E735204C17DB8D010044EDD6 /* share@2x.png in Resources */,
 				E73BAD7817D0B70500E4767B /* mystories.png in Resources */,
 				2CF7CAE017D9F53E00014667 /* TrendingWebViewController.xib in Resources */,
@@ -597,6 +582,7 @@
 				E75BF3FB17DF2C13001919BF /* yfinance@2x.jpg in Resources */,
 				E75BF3FF17DF2C48001919BF /* yfinance.jpeg in Resources */,
 				E7801C7617DF5641003AAE84 /* cross@2x.png in Resources */,
+				E7801C7C17DFA95B003AAE84 /* bg.png in Resources */,
 				E73BAD7B17D0B70500E4767B /* others@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -661,7 +647,6 @@
 				E735203517DAF0EA0044EDD6 /* Trend.m in Sources */,
 				E735202317D864450044EDD6 /* GTMNSString+HTMl.m in Sources */,
 				E7B4A49717D5035C00FD1804 /* Story.m in Sources */,
-				E75BF3EA17DF22B2001919BF /* PopularVideosViewController.m in Sources */,
 				E735205317DDAEDC0044EDD6 /* SavedStoryCell.m in Sources */,
 				E735202B17D8F44B0044EDD6 /* RestObject.m in Sources */,
 				E764A99B17CE131B00E38082 /* main.m in Sources */,
@@ -671,7 +656,6 @@
 				E75BF40217DF2CFA001919BF /* CollectionCell.m in Sources */,
 				2CF7CADF17D9F53E00014667 /* TrendingWebViewController.m in Sources */,
 				E75BF3E217DECEED001919BF /* HPLTagCloudGenerator.m in Sources */,
-				E7B4A48C17D5000500FD1804 /* StoryDescView.m in Sources */,
 				E764A9DB17CF7B9000E38082 /* MyStoriesViewController.m in Sources */,
 				E7B4A49317D5030C00FD1804 /* Util.m in Sources */,
 				E735205917DDB3F80044EDD6 /* StoryDetailViewController.m in Sources */,

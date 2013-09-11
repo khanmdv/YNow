@@ -13,7 +13,7 @@
 #import "YahooClient.h"
 #import "StoryDetailViewController.h"
 
-#define kSAVED_CELL @"SavedCell"
+#define kSAVED_CELL @"SavedStoryCell"
 
 @interface MyStoriesViewController ()
 
@@ -37,22 +37,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    [refreshControl addTarget:self action:@selector(fetchSavedStories) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:refreshControl];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchSavedStories) forControlEvents:UIControlEventValueChanged];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"SavedStoryCell" bundle:nil] forCellReuseIdentifier:kSAVED_CELL];
-    
-    self.tabBarController.navigationItem.title = @"My Stories";
-    self.tabBarController.navigationItem.leftBarButtonItem = self.editButtonItem;
-    self.navigationController.navigationBarHidden = NO;
     
     [self fetchSavedStories];
 }
 
 - (void) viewWillAppear:(BOOL)animated{
+    self.tabBarController.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tabBarController.navigationItem.title = @"My Stories";
     self.navigationController.navigationBarHidden = NO;
     self.tableView.frame = CGRectMake(0, 64, 320, 568);
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     NSLog(@"Insets - %f", self.tableView.contentInset.top);
 }
 
@@ -108,7 +106,7 @@
     // Configure the cell...
     Story *st = [self.stories objectAtIndex:indexPath.row];
     
-    [tCell.imageView setImageWithURL:[NSURL URLWithString:st.imgUrl]];
+    [tCell.storyImageView setImageWithURL:[NSURL URLWithString:st.imgUrl]];
     tCell.titleLbl.text = st.storyTitle;
     tCell.srcLbl.text = st.source;
     tCell.dateLbl.text = st.storyDate;
@@ -134,8 +132,10 @@
             self.stories = [Story storyWithArray:results];
             [self.tableView reloadData];
         }
+        
     } failure:^(id JSON) {
         NSLog(@"Error Occurred.");
+        [self.refreshControl endRefreshing];
     }];
 }
 

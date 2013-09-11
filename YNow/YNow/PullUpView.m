@@ -51,7 +51,6 @@
 */
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    NSLog(@"I am starting");
     // We do not want more than 1 touch input
     if (touches.count > 1) return;
     
@@ -71,9 +70,9 @@
     
     CGRect fr = self.frame;
     if (point.y > prev.y){ // down direction
-        fr.origin.y+=10;
+        fr.origin.y+=12;
     } else{
-        fr.origin.y-=10;
+        fr.origin.y-=12;
     }
     self.frame = fr;
     

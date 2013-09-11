@@ -10,7 +10,7 @@
 
 @interface SavedStoryCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *storyImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLbl;
 @property (weak, nonatomic) IBOutlet UILabel *srcLbl;
 @property (weak, nonatomic) IBOutlet UILabel *dateLbl;

@@ -11,6 +11,7 @@
 #import "PullUpViewDelegate.h"
 
 @interface TopStoriesViewController : UIViewController <iCarouselDataSource, iCarouselDelegate, UIWebViewDelegate, PullUpViewDelegate, UIScrollViewDelegate, UIActionSheetDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *pullRefreshLbl;
 
 @property (nonatomic, strong) IBOutlet iCarousel *carousel;
 @property (weak, nonatomic) IBOutlet UIView *topBar;

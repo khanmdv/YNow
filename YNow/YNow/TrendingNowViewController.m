@@ -17,6 +17,7 @@
 
 @property (nonatomic, strong) NSMutableArray* trends;
 @property (nonatomic, strong) NSMutableDictionary *trendsMap;
+@property (nonatomic, strong) UIButton* refreshBtn;
 
 
 -(void) generateWordCloud;
@@ -38,14 +39,17 @@
 {
     [super viewDidLoad];
     
-    UIButton *button1 = [[UIButton alloc] init];
-    button1.frame=CGRectMake(0,0,24,24);
-    [button1 setBackgroundImage:[UIImage imageNamed: @"refresh.png"] forState:UIControlStateNormal];
-    [button1 addTarget:self action:@selector(handleRefresh) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.tabBarController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button1];
-    
     [self fetchTrends];
+    
+    self.refreshBtn = [[UIButton alloc] init];
+    self.refreshBtn.frame=CGRectMake(0,0,24,24);
+    [self.refreshBtn setBackgroundImage:[UIImage imageNamed: @"refresh.png"] forState:UIControlStateNormal];
+    [self.refreshBtn addTarget:self action:@selector(handleRefresh) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    self.tabBarController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.refreshBtn];
+    self.tabBarController.navigationItem.title = @"Trending Topics";
 }
 
 -(void)handleRefresh {
